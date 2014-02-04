@@ -1,6 +1,5 @@
 #include-once
 
-_AssertValueIs(1, '1', 'hi', 'nope')
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _Assertion
@@ -130,6 +129,23 @@ Func _AssertValueIsNot($vValue, $vNot, $sMsg, $sTitle, $fTerminate=True)
 	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
 EndFunc
 
+; #FUNCTION# ====================================================================================================================
+; Name ..........: _AssertValueIs
+; Description ...: Tests that a value equals another value.
+; Syntax ........: _AssertValueIs($vValue, $vIs, $sMsg, $sTitle[, $fTerminate = True])
+; Parameters ....: $vValue              - A variant value.
+;                  $vIs                 - A variant value.
+;                  $sMsg                - A string value.  See _Assertion().
+;                  $sTitle              - A string value.  See _Assertion().
+;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
+; Return values .: See _Assertion().
+; Author ........: Your Name
+; Modified ......:
+; Remarks .......:
+; Related .......:
+; Link ..........:
+; Example .......: No
+; ===============================================================================================================================
 Func _AssertValueIs($vValue, $vIs, $sMsg, $sTitle, $fTerminate=True)
 	If VarGetType($vValue) <> VarGetType($vIs) Then
 		; Different types, not the same
@@ -188,13 +204,29 @@ Func _AssertFileExists($sFn, $sMsg, $sTitle, $fTerminate=True)
 	Return SetError(1)
 EndFunc
 
-;~ Func _AssertWinWithTitleExists($sTitle, $iTitleMatchMode=1, $sMsg, $sTitle, $fTerminate=True)
-;~ 	$iPreviousSettings = Opt("WinTitleMatchMode", $iTitleMatchMode)
-;~ 	$iExists = WinExists($sFn)
-;~ 	Opt("WinTitleMatchMode", $iPreviousSettings)
-
-
-;~ EndFunc
+; #FUNCTION# ====================================================================================================================
+; Name ..........: _AssertWinWithTitleExists
+; Description ...: Tests that a window exists
+; Syntax ........: _AssertWinWithTitleExists($sWinTitle, $sMsg, $sTitle[, $fTerminate = True[, $iTitleMatchMode = 1]])
+; Parameters ....: $sWinTitle           - A string value. The title of the window.  See Remarks.
+;                  $sMsg                - A string value.  See _Assertion().
+;                  $sTitle              - A string value.  See _Assertion().
+;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
+;                  $iTitleMatchMode     - [optional] An integer value. Default is 1.  See WinTitleMatchMode in AutoIt docs.
+; Return values .: See _Assertion().
+; Author ........: Your Name
+; Modified ......:
+; Remarks .......:
+; Related .......:
+; Link ..........:
+; Example .......: No
+; ===============================================================================================================================
+Func _AssertWinWithTitleExists($sWinTitle, $sMsg, $sTitle, $fTerminate=True, $iTitleMatchMode=1)
+	$iPreviousSettings = Opt("WinTitleMatchMode", $iTitleMatchMode)
+	$iExists = WinExists($sWinTitle)
+	Opt("WinTitleMatchMode", $iPreviousSettings)
+	_AssertValueIs($iExists, 1, $sMsg, $sTitle, $fTerminate)
+EndFunc
 
 Func _ValueIsIn($value, $possible_matches)
 	For $match In $possible_matches
