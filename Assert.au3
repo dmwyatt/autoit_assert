@@ -1,5 +1,7 @@
 #include-once
 
+_AssertValueIs(1, '1', 'hi', 'nope')
+
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _Assertion
 ; Description ...: Evalutes a condition and displays a MsgBox if the result is False-y
@@ -121,10 +123,20 @@ EndFunc
 Func _AssertValueIsNot($vValue, $vNot, $sMsg, $sTitle, $fTerminate=True)
 	If VarGetType($vValue) <> VarGetType($vNot) Then
 		; Different types, not the same
+		Return
+	EndIf
+	$sAssertion = StringFormat("%s <> %s", $vValue, $vNot)
+
+	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
+EndFunc
+
+Func _AssertValueIs($vValue, $vIs, $sMsg, $sTitle, $fTerminate=True)
+	If VarGetType($vValue) <> VarGetType($vIs) Then
+		; Different types, not the same
 		_ErrMsgBox($sMsg, $sTitle, $fTerminate)
 		Return SetError(1)
 	EndIf
-	$sAssertion = StringFormat("%s <> %s", $vValue, $vNot)
+	$sAssertion = StringFormat("%s = %s", $vValue, $vIs)
 
 	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
 EndFunc
@@ -175,6 +187,14 @@ Func _AssertFileExists($sFn, $sMsg, $sTitle, $fTerminate=True)
 	EndIf
 	Return SetError(1)
 EndFunc
+
+;~ Func _AssertWinWithTitleExists($sTitle, $iTitleMatchMode=1, $sMsg, $sTitle, $fTerminate=True)
+;~ 	$iPreviousSettings = Opt("WinTitleMatchMode", $iTitleMatchMode)
+;~ 	$iExists = WinExists($sFn)
+;~ 	Opt("WinTitleMatchMode", $iPreviousSettings)
+
+
+;~ EndFunc
 
 Func _ValueIsIn($value, $possible_matches)
 	For $match In $possible_matches
