@@ -59,7 +59,7 @@ EndFunc   ;==>_AssertStringContains
 ;                  $sTitle              - A string value.  See _Assertion().
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ; Return values .: Returns 1 if failure and sets @error to 1.
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......:
 ; Related .......:
@@ -83,7 +83,7 @@ EndFunc   ;==>_AssertArrayLength
 ;                  $sTitle              - A string value.  See _Assertion().
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ; Return values .: See _Assertion().
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......: $vPossibleMatches is either an array or a string like: "these,are,some,values"
 ; Related .......:
@@ -112,7 +112,7 @@ EndFunc   ;==>_AssertValueIsIn
 ;                  $sTitle              - A string value.  See _Assertion().
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ; Return values .: See _Assertion().
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......:
 ; Related .......:
@@ -139,7 +139,7 @@ EndFunc   ;==>_AssertValueIsNot
 ;                  $sTitle              - A string value.  See _Assertion().
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ; Return values .: See _Assertion().
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......:
 ; Related .......:
@@ -166,7 +166,7 @@ EndFunc   ;==>_AssertValueIs
 ;                  $sTitle              - A string value.  See _Assertion().
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ; Return values .: See _Assertion().
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......:
 ; Related .......:
@@ -189,7 +189,7 @@ EndFunc   ;==>_AssertIsInt
 ;                  $sTitle              - A string value.  See _Assertion().
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ; Return values .: See _Assertion().
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......:
 ; Related .......:
@@ -214,7 +214,7 @@ EndFunc   ;==>_AssertFileExists
 ;                  $fTerminate          - [optional] A boolean value. Default is True.  See _Assertion().
 ;                  $iTitleMatchMode     - [optional] An integer value. Default is 1.  See WinTitleMatchMode in AutoIt docs.
 ; Return values .: See _Assertion().
-; Author ........: Your Name
+; Author ........: Dustin Wyatt
 ; Modified ......:
 ; Remarks .......:
 ; Related .......:
