@@ -18,13 +18,13 @@
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _Assertion($sCondition, $sMsg, $sTitle, $fTerminate=True)
+Func _Assertion($sCondition, $sMsg, $sTitle, $fTerminate = True)
 	Local $bCondition = Execute($sCondition)
 	If Not $bCondition Then
 		_ErrMsgBox($sMsg, $sTitle, $fTerminate)
 	EndIf
 	Return SetError(1)
-EndFunc
+EndFunc   ;==>_Assertion
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertStringContains
@@ -43,11 +43,11 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertStringContains($sString, $sSubString, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertStringContains($sString, $sSubString, $sMsg, $sTitle, $fTerminate = True)
 	$sAssertion = StringFormat("StringInStr('%s', '%s')", $sString, $sSubString)
 
 	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
-EndFunc
+EndFunc   ;==>_AssertStringContains
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertArrayLength
@@ -66,12 +66,12 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertArrayLength($aArray, $iLength, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertArrayLength($aArray, $iLength, $sMsg, $sTitle, $fTerminate = True)
 	If Not UBound($aArray) = $iLength Then
 		_ErrMsgBox($sMsg, $sTitle, $fTerminate)
 		Return SetError(1)
 	EndIf
-EndFunc
+EndFunc   ;==>_AssertArrayLength
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertValueIsIn
@@ -90,7 +90,7 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertValueIsIn($vValue, $vPossibleMatches, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertValueIsIn($vValue, $vPossibleMatches, $sMsg, $sTitle, $fTerminate = True)
 	;possible_matches can be an array of strings/ints/floats or a string of comma-separated values with no spaces
 	If IsString($vPossibleMatches) Then
 		$aPossibles = StringSplit($vPossibleMatches, ",")
@@ -100,7 +100,7 @@ Func _AssertValueIsIn($vValue, $vPossibleMatches, $sMsg, $sTitle, $fTerminate=Tr
 
 	$sAssertion = String(_ValueIsIn($vValue, $aPossibles))
 	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
-EndFunc
+EndFunc   ;==>_AssertValueIsIn
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertValueIsNot
@@ -119,7 +119,7 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertValueIsNot($vValue, $vNot, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertValueIsNot($vValue, $vNot, $sMsg, $sTitle, $fTerminate = True)
 	If VarGetType($vValue) <> VarGetType($vNot) Then
 		; Different types, not the same
 		Return
@@ -127,7 +127,7 @@ Func _AssertValueIsNot($vValue, $vNot, $sMsg, $sTitle, $fTerminate=True)
 	$sAssertion = StringFormat("%s <> %s", $vValue, $vNot)
 
 	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
-EndFunc
+EndFunc   ;==>_AssertValueIsNot
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertValueIs
@@ -146,7 +146,7 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertValueIs($vValue, $vIs, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertValueIs($vValue, $vIs, $sMsg, $sTitle, $fTerminate = True)
 	If VarGetType($vValue) <> VarGetType($vIs) Then
 		; Different types, not the same
 		_ErrMsgBox($sMsg, $sTitle, $fTerminate)
@@ -155,7 +155,7 @@ Func _AssertValueIs($vValue, $vIs, $sMsg, $sTitle, $fTerminate=True)
 	$sAssertion = StringFormat("%s = %s", $vValue, $vIs)
 
 	Return _Assertion($sAssertion, $sMsg, $sTitle, $fTerminate)
-EndFunc
+EndFunc   ;==>_AssertValueIs
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertIsInt
@@ -173,12 +173,12 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertIsInt($iValue, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertIsInt($iValue, $sMsg, $sTitle, $fTerminate = True)
 	If Not IsInt($iValue) Then
 		_ErrMsgBox($sMsg, $sTitle, $fTerminate)
 	EndIf
 	Return SetError(1)
-EndFunc
+EndFunc   ;==>_AssertIsInt
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertFileExists
@@ -196,13 +196,13 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertFileExists($sFn, $sMsg, $sTitle, $fTerminate=True)
+Func _AssertFileExists($sFn, $sMsg, $sTitle, $fTerminate = True)
 	$iFileExists = FileExists($sFn)
 	If $iFileExists = 0 Then
 		_ErrMsgBox($sMsg, $sTitle, $fTerminate)
 	EndIf
 	Return SetError(1)
-EndFunc
+EndFunc   ;==>_AssertFileExists
 
 ; #FUNCTION# ====================================================================================================================
 ; Name ..........: _AssertWinWithTitleExists
@@ -221,23 +221,23 @@ EndFunc
 ; Link ..........:
 ; Example .......: No
 ; ===============================================================================================================================
-Func _AssertWinWithTitleExists($sWinTitle, $sMsg, $sTitle, $fTerminate=True, $iTitleMatchMode=1)
+Func _AssertWinWithTitleExists($sWinTitle, $sMsg, $sTitle, $fTerminate = True, $iTitleMatchMode = 1)
 	$iPreviousSettings = Opt("WinTitleMatchMode", $iTitleMatchMode)
 	$iExists = WinExists($sWinTitle)
 	Opt("WinTitleMatchMode", $iPreviousSettings)
 	_AssertValueIs($iExists, 1, $sMsg, $sTitle, $fTerminate)
-EndFunc
+EndFunc   ;==>_AssertWinWithTitleExists
 
 Func _ValueIsIn($value, $possible_matches)
 	For $match In $possible_matches
 		If $value = $match Then Return True
 	Next
 	Return False
-EndFunc
+EndFunc   ;==>_ValueIsIn
 
-Func _ErrMsgBox($sMsg, $sTitle, $fTerminate=True)
+Func _ErrMsgBox($sMsg, $sTitle, $fTerminate = True)
 	MsgBox(16 + 262144, $sTitle, $sMsg)
 	If $fTerminate Then
 		Exit
 	EndIf
-EndFunc
+EndFunc   ;==>_ErrMsgBox
